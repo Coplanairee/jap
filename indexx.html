@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification d'Invitation</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        .valid { color: green; font-size: 24px; }
+        .invalid { color: red; font-size: 24px; }
+    </style>
+</head>
+<body>
+    <h1>Vérification de l'Invitation</h1>
+    <p id="message">Vérification en cours...</p>
+
+    <script>
+        // Liste des codes d'invitation valides
+        const validCodes = ["INV12345", "INV67890", "INV54321"];
+
+        // Récupérer le code depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get("code");
+
+        const messageElement = document.getElementById("message");
+        
+        if (code && validCodes.includes(code)) {
+            messageElement.innerHTML = "✅ Bienvenue ! Votre invitation est valide.";
+            messageElement.className = "valid";
+        } else {
+            messageElement.innerHTML = "❌ Invitation invalide !";
+            messageElement.className = "invalid";
+        }
+    </script>
+</body>
+</html>
